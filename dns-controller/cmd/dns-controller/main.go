@@ -177,9 +177,11 @@ func main() {
 			err := gossipState.Start()
 			if err != nil {
 				klog.Fatalf("gossip exited unexpectedly: %v", err)
-			} else {
-				klog.Fatalf("gossip exited unexpectedly, but without error")
-			}
+				return nil
+			} 
+			
+			klog.Fatalf("gossip exited unexpectedly, but without error")
+			
 		}()
 
 		dnsView := gossipdns.NewDNSView(gossipState)
